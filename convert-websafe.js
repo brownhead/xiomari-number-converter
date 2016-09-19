@@ -80,9 +80,17 @@ var includes = function includes(array, thing) {
 };
 
 var consonantAwareConcat = function consonantAwareConcat(a, b) {
+    var CONSONANTS = ["h", "j", "k", "l", "m", "p", "r", "s", "t", "x", "z"];
+
+    var aLetter = a[a.length - 1];
+    var bLetter = b[0];
+    if (!(includes(CONSONANTS, aLetter) && includes(CONSONANTS, bLetter))) {
+        return "" + a + b;
+    }
+
     var ARTICULATION_BUDDIES_1 = ["t", "z", "n"];
     var ARTICULATION_BUDDIES_2 = ["m", "p"];
-    var safeToConcat = includes(ARTICULATION_BUDDIES_1, a) && includes(ARTICULATION_BUDDIES_1, b) || includes(ARTICULATION_BUDDIES_2, a) && includes(ARTICULATION_BUDDIES_2, b);
+    var safeToConcat = includes(ARTICULATION_BUDDIES_1, aLetter) && includes(ARTICULATION_BUDDIES_1, bLetter) || includes(ARTICULATION_BUDDIES_2, aLetter) && includes(ARTICULATION_BUDDIES_2, bLetter);
 
     if (safeToConcat) {
         return "" + a + b;
