@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Xiomari Number Translator</title>
+	<script src="./convert-websafe.js"></script>
+</head>
+<body>
+<div>
+	<label>
+		<span>Enter the number you want to convert to Xiomari:</span>
+		<input id="numberInput" />
+	</label>
+</div>
+<div>
+	Converted number: <span id="result" style="font-weight: bold"></span>
+</div>
+<script>
+	document.getElementById("numberInput").onkeyup = function() {
+		var value = document.getElementById("numberInput").value;
+
+		var num = parseInt(value);
+		
+		document.getElementById("result").innerHTML = fromInteger(num);
+	}
+</script>
+</body>
+</html>
